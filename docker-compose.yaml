@@ -24,12 +24,10 @@ services:
       - 5432:5432
     restart: unless-stopped
     volumes:
-      - horilla-data:/var/lib/postgresql/data
+      - /mnt/ebs/postgres-data:/var/lib/postgresql/data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
 
-volumes:
-  horilla-data:
